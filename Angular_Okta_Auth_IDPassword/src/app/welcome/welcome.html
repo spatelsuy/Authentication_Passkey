@@ -1,0 +1,32 @@
+<div *ngIf="idTokenStr; else noToken">
+  <h2>Successfully authenticated</h2>
+  <div class="logout-container">
+  <button class="logout-button" (click)="logout()">Logout</button>
+  </div>
+</div>
+
+<ng-template #noToken>
+  <!-- This block shows when idTokenStr is falsy -->
+  <h4>Authenticate to see the ID Token details.</h4>
+</ng-template>
+
+<p class="token-line"><strong>ID Token:</strong> {{ idToken?.idToken }}</p>
+<p class="token-line"><strong>Access Token:</strong> {{ accessToken?.accessToken }}</p>
+<p><strong>User Email:</strong> {{ userInfo?.email }}</p>
+<p><strong>User Name:</strong> {{ userInfo?.name }}</p>
+
+
+<div *ngIf="idTokenStr" >
+  <h3>ID Token Payload</h3>
+  <pre>{{ decodeJwt(idTokenStr) | json }}</pre>
+</div>
+
+<div *ngIf="accessTokenStr" >
+  <h3>Access Token Payload</h3>
+  <pre>{{ decodeJwt(accessTokenStr) | json }}</pre>
+</div>
+
+<p class="token-line"><strong>Lifetime of ID Token:</strong> {{ idTokenLife }}</p>
+<p class="token-line"><strong>Lifetime of Access Token:</strong> {{ accessTokenLife }}</p>
+
+
