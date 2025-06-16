@@ -1,0 +1,34 @@
+@startuml
+actor User
+participant "Angular Login Component" as Login
+participant "OktaAuth JS SDK" as SDK
+participant "Okta Authorization Server" as Okta
+participant "OktaCallbackComponent" as Callback
+participant "WelcomeComponent" as Welcome
+
+== User initiates login ==
+User -> Login : Enter username & password\nClick Login
+Login -> SDK : signInWithCredentials({username, password})
+SDK -> Okta : Validate credentials
+Okta --> SDK : Auth transaction with sessionToken
+SDK --> Login : sessionToken
+
+== Redirect to Okta authorization endpoint ==
+Login -> SDK : signInWithRedirect({ sessionToken,\noriginalUri: '/welcome' })
+SDK -> Okta : Exchange sessionToken for auth code\nRedirect to /login/callback
+
+== Handle callback ==
+Okta -> Callback : Redirect to /login/callback with code
+Callback -> SDK : handleRedirect()
+SDK -> Okta : Exchange code for tokens
+Okta --> SDK : ID token, Access token
+SDK --> Callback : Tokens saved (e.g., in localStorage)
+
+== Redirect to welcome page ==
+Callback -> SDK : getOriginalUri()
+SDK --> Callback : '/welcome'
+Callback -> Welcome : Redirect to WelcomeComponent
+User -> Welcome : See welcome page
+
+@enduml
+
