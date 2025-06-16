@@ -71,3 +71,6 @@ On the welcome page for learning purpose and to understand the format of ID Toke
 this.idToken = await oktaAuth.tokenManager.get('idToken');
 this.accessToken = await oktaAuth.tokenManager.get('accessToken');
 ```
+
+## Sequence of flow
+![App Screenshot](Angular_SPA_Okta_Authentication_Flow.png)
