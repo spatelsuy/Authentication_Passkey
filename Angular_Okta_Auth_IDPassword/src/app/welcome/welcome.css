@@ -1,0 +1,87 @@
+:host {
+  display: block;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.token-line {
+  word-break: break-all;       /* Forces long words to break */
+  white-space: normal;         /* Ensures wrapping */
+  overflow-wrap: anywhere;     /* Safe fallback */
+  font-family: monospace;      /* Optional: for tokens */
+  background-color: #f8f8f8;   /* Optional: make it more readable */
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+strong {
+  color: #333;
+}
+
+h3 {
+  margin-top: 30px;
+  color: #34495e;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 14px;
+  overflow-x: auto;
+  max-height: 400px;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 600px) {
+  :host {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  pre {
+    font-size: 12px;
+  }
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout-button {
+  font-size: 1.5rem;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
+}
+
